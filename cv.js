@@ -79,7 +79,16 @@ function loadAv(inp){
 }
 // AUTOSAVE
 function S(){clearTimeout(_st);_st=setTimeout(function(){try{localStorage.setItem('cv_EX',JSON.stringify(EX));localStorage.setItem('cv_L',L);var f=g('sfl');f.textContent=T[L].sav;f.classList.add('show');setTimeout(function(){f.classList.remove('show');},1500);}catch(e){}},600);}
-document.addEventListener('input',function(e){if(e.target&&e.target.isContentEditable)S();});
+document.addEventListener('input',function(e){
+  if(e.target&&e.target.isContentEditable){
+    S();
+    // Keep print footer name in sync
+    var fn=g('fname'),ln=g('flname'),pf=g('print-footer');
+    if(pf&&(e.target.id==='fname'||e.target.id==='flname')){
+      pf.textContent=(fn?fn.textContent.trim():'')+' '+(ln?ln.textContent.trim():'');
+    }
+  }
+});
 // LANGUAGE SWITCH
 function setLang(l){
   L=l;document.documentElement.lang=l;var t=T[l];
@@ -120,80 +129,11 @@ function doSend(){var t=T[L],n=g('fn').value.trim(),e=g('fe').value.trim(),s=g('
 
 
 function printCV(){
-  // Serialize all data to sessionStorage so cv-print.html can read it reliably
-  try {
-    sessionStorage.setItem('cv_print_EX', JSON.stringify(EX));
-    sessionStorage.setItem('cv_print_L',  L);
-    sessionStorage.setItem('cv_print_T',  JSON.stringify(T));
-    // Read all editable DOM fields and store them too
-    var dom = {};
-    ['fname','flname','ftitle','s1','s2','s3','s4','sl1','sl2','sl3','sl4','ap1','ap2','eml','locv'].forEach(function(id){
-      var el = document.getElementById(id);
-      dom[id] = el ? el.textContent.trim() : '';
-    });
-    // ain uses innerHTML (has <em> tag)
-    var ainEl = document.getElementById('ain');
-    dom['ain'] = ainEl ? ainEl.innerHTML : '';
-    // Skills
-    var skills = [];
-    document.querySelectorAll('#skw .stag').forEach(function(el){
-      var txt = el.querySelector('.stag-text') ? el.querySelector('.stag-text').textContent.trim() : '';
-      if(txt) skills.push({text:txt, hi:el.classList.contains('hi')});
-    });
-    dom['skills'] = skills;
-    // Education
-    var edu = [];
-    document.querySelectorAll('#edl .ei').forEach(function(ei){
-      edu.push({
-        yr: ei.querySelector('.ey')         ? ei.querySelector('.ey').textContent.trim()         : '',
-        ti: ei.querySelector('strong')      ? ei.querySelector('strong').textContent.trim()      : '',
-        pl: ei.querySelector('.einfo span') ? ei.querySelector('.einfo span').textContent.trim() : ''
-      });
-    });
-    dom['edu'] = edu;
-    // Values
-    var vals = [];
-    document.querySelectorAll('#vgrid .vc').forEach(function(vc){
-      vals.push({
-        ic: vc.querySelector('.ic') ? vc.querySelector('.ic').textContent.trim() : '',
-        h:  vc.querySelector('h4') ? vc.querySelector('h4').textContent.trim()  : '',
-        p:  vc.querySelector('p')  ? vc.querySelector('p').textContent.trim()   : ''
-      });
-    });
-    dom['vals'] = vals;
-    // Interests
-    var ints = [];
-    document.querySelectorAll('#intwrap .ic2').forEach(function(ic){
-      var spans = Array.from(ic.querySelectorAll('span:not(.ic2del)'));
-      var txt = spans.map(function(s){return s.textContent.trim();}).join(' ').trim();
-      if(txt) ints.push(txt);
-    });
-    dom['ints'] = ints;
-    // Languages
-    var langs = [];
-    document.querySelectorAll('#langl .lr').forEach(function(lr){
-      langs.push({
-        n:   lr.querySelector('.ln')  ? lr.querySelector('.ln').textContent.trim()          : '',
-        lv:  lr.querySelector('.ll')  ? lr.querySelector('.ll').textContent.trim()          : '',
-        pct: lr.querySelector('.lbw') ? (lr.querySelector('.lbw').dataset.pct || '50')      : '50'
-      });
-    });
-    dom['langs'] = langs;
-    // Contact items
-    var contacts = [];
-    document.querySelectorAll('.cg .ci').forEach(function(ci){
-      contacts.push({
-        lbl: ci.querySelector('.cl2') ? ci.querySelector('.cl2').textContent.trim() : '',
-        val: ci.querySelector('.cv2') ? ci.querySelector('.cv2').textContent.trim() : ''
-      });
-    });
-    dom['contacts'] = contacts;
-    sessionStorage.setItem('cv_print_dom', JSON.stringify(dom));
-  } catch(e) {
-    console.error('Could not save print data:', e);
-  }
-  var w = window.open('cv-print.html', '_blank');
-  if(!w) alert(L==='no' ? 'Tillat popup for å bruke PDF.' : 'Allow popups to use PDF.');
+  document.querySelectorAll('.ye').forEach(function(y){y.classList.add('op');});
+  window.print();
+  window.onafterprint = function(){
+    document.querySelectorAll('.ye').forEach(function(y){y.classList.remove('op');});
+  };
 }
 // DARK MODE
 function toggleDark(){
