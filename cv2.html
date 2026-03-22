@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – Erik Solberg</title>
+<style>
+/* === GRUNNSTIL === */
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    background: #f5f7fa;
+    color: #1c2b36;
+}
+a { text-decoration: none; color: inherit; }
+h1,h2,h3,h4,h5 { margin: 0; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+/* === HEADER === */
+header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+header .avatar {
+    width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg,#7ab8d4,#c8dfe9); display: flex; align-items: center; justify-content: center; font-size: 48px; color: #fff; font-weight: bold;
+}
+header .name-title { display: flex; flex-direction: column; }
+header .name-title h1 { font-size: 32px; }
+header .name-title h2 { font-size: 18px; font-weight: 400; color: #2c5f7a; margin-top: 4px; }
+
+/* === TAB NAV === */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+.tab-btn { flex: 1; padding: 12px; background: #e4f0f6; border: none; border-radius: 8px 8px 0 0; font-weight: 500; cursor: pointer; transition: 0.2s; }
+.tab-btn.active { background: #7ab8d4; color: #fff; }
+
+/* === TAB PANEL === */
+.tab-panel { display: none; background: #fff; padding: 24px; border-radius: 0 8px 8px 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.tab-panel.active { display: block; }
+
+/* === SEKSJONER === */
+.section { margin-bottom: 32px; }
+.section h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 22px; margin-bottom: 12px; color: #0f2a38; }
+
+/* === LISTE STILER === */
+ul { list-style: none; padding-left: 0; }
+ul li { padding-left: 16px; position: relative; margin-bottom: 8px; }
+ul li::before { content:'▸'; position: absolute; left: 0; color: #6bcfb5; }
+
+/* === KOMPETANSE TAGS === */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tag { padding: 4px 10px; background: rgba(107,207,181,.15); border: 1px solid rgba(107,207,181,.3); border-radius: 16px; font-size: 12px; color: #2a6b5a; }
+
+/* === FERDIGHETER BAR === */
+.skill { display: flex; align-items: center; margin-bottom: 12px; }
+.skill-name { width: 120px; font-size: 13px; font-weight: 500; }
+.skill-bar { flex: 1; height: 8px; background: #e4f0f6; border-radius: 4px; overflow: hidden; }
+.skill-fill { height: 100%; background: linear-gradient(to right,#7ab8d4,#6bcfb5); }
+
+/* === RESPONSIV === */
+@media(max-width:600px) {
+    header { flex-direction: column; align-items: center; text-align: center; }
+    header .name-title h1 { font-size: 28px; }
+    header .name-title h2 { font-size: 16px; }
+    .skill-name { width: 90px; font-size: 12px; }
+}
+
+/* === FOOTER === */
+footer { text-align:center; font-size: 12px; color: #7a9eb0; margin-top: 48px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <header>
+        <div class="avatar">ES</div>
+        <div class="name-title">
+            <h1>Erik Solberg</h1>
+            <h2>IT, Ernæring & Trening</h2>
+        </div>
+    </header>
+
+    <!-- TAB NAV -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event,'personal')">Personlig Info</button>
+        <button class="tab-btn" onclick="openTab(event,'eduexp')">Utdanning & Erfaring</button>
+        <button class="tab-btn" onclick="openTab(event,'skills')">Ferdigheter & Sertifikater</button>
+    </div>
+
+    <!-- TAB PANELS -->
+    <div id="personal" class="tab-panel active">
+        <div class="section">
+            <h3>Kontakt</h3>
+            <ul>
+                <li>E-post: <strong>erik.solberg@example.com</strong></li>
+                <li>Telefon: <strong>+47 900 00 000</strong></li>
+                <li>Adresse: <strong>Oslo, Norge</strong></li>
+                <li>LinkedIn: <strong>linkedin.com/in/eriksolberg</strong></li>
+                <li>GitHub: <strong>github.com/eriksolberg</strong></li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Om Meg</h3>
+            <p>Jeg er en nysgjerrig teknolog, ernæringsekspert og treningsentusiast. Jeg kombinerer systemtenkning med praktisk helse- og treningskunnskap, og brenner for å skape løsninger som både fungerer og inspirerer.</p>
+        </div>
+    </div>
+
+    <div id="eduexp" class="tab-panel">
+        <div class="section">
+            <h3>Utdanning</h3>
+            <ul>
+                <li>Master i Informatikk – NTNU (2013)</li>
+                <li>Personlig trener sertifisering – Norges idrettshøgskole (2015)</li>
+                <li>Kostholdsveileder – Universitetet i Oslo (2016)</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Arbeidserfaring</h3>
+            <ul>
+                <li>Principal Architect – Arctic Systems AS (2024–nå)</li>
+                <li>Senior Backend Engineer – Fjord Digital (2022–2023)</li>
+                <li>Software Engineer – Cognite AS (2019–2021)</li>
+                <li>IT- og treningskonsulent (2016–2018)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="skills" class="tab-panel">
+        <div class="section">
+            <h3>IT Ferdigheter</h3>
+            <div class="skill"><div class="skill-name">TypeScript</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+            <div class="skill"><div class="skill-name">Python</div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill"><div class="skill-name">Go</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill"><div class="skill-name">Cloud / AWS</div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        </div>
+        <div class="section">
+            <h3>Trening & Ernæring</h3>
+            <ul>
+                <li>Styrketrening – Personlig erfaring og veiledning</li>
+                <li>Kostholdsplanlegging for helse og prestasjon</li>
+                <li>Frisbeegolf, sykling og utholdenhetstrening</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Sertifikater</h3>
+            <ul>
+                <li>AWS Certified Solutions Architect</li>
+                <li>Certified Kubernetes Administrator (CKA)</li>
+                <li>Personlig trener sertifisering</li>
+                <li>Kostholdsveileder</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>© 2026 Erik Solberg – Profesjonell CV</footer>
+</div>
+
+<script>
+// Tab-funksjonalitet
+function openTab(evt, tabName) {
+    var i, tabpanel, tabbtns;
+    tabpanel = document.getElementsByClassName("tab-panel");
+    for (i = 0; i < tabpanel.length; i++) { tabpanel[i].classList.remove("active"); }
+    tabbtns = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tabbtns.length; i++) { tabbtns[i].classList.remove("active"); }
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>
