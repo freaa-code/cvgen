@@ -36,8 +36,6 @@
       <button class="lb on" onclick="setLang('no')" aria-label="Norsk" aria-pressed="true">NO</button>
       <button class="lb" onclick="setLang('en')" aria-label="English" aria-pressed="false">EN</button>
     </div>
-    <button class="print-layout-btn" id="plbtn" onclick="togglePrintLayout()" aria-label="Vis kompakt utskriftsvisning">&#x1F5D0; <span id="pllbl">Kompakt visning</span></button>
-    <button class="pdf-btn" onclick="printCV()" aria-label="Last ned CV som PDF">&#x1F4C4; <span id="pdfl">Last ned PDF</span></button>
     <button class="dark-btn" id="dkbtn" onclick="toggleDark()" aria-label="Bytt fargemodus">&#x1F319; <span id="dklbl">Mørk modus</span></button>
   </div>
 </header>
@@ -172,6 +170,8 @@
 </div>
 <footer><span contenteditable="true">&#169; 2025 Erik Solberg &middot; Bygget med omhu i Oslo</span></footer>
 </div>
+<!-- Print footer — only visible when printing, shows name on every page -->
+<div class="print-footer" id="print-footer">Erik Solberg</div>
 <script src="cv-data.js"></script>
 <script src="cv.js"></script>
 </body>
