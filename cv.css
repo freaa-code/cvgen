@@ -25,13 +25,14 @@ header{padding:40px 0 0;display:flex;justify-content:space-between;align-items:f
 .lt{display:flex;gap:4px;background:rgba(200,223,233,.4);border:1px solid var(--fr);border-radius:24px;padding:4px}
 .lb{background:none;border:none;cursor:pointer;padding:6px 14px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);border-radius:20px;transition:all .2s}
 .lb.on{background:var(--df);color:#fff}
-.pdf-btn{display:flex;align-items:center;gap:6px;padding:9px 16px;background:rgba(44,95,122,.1);border:1.5px solid var(--fr);border-radius:24px;font-family:Outfit,sans-serif;font-size:12px;font-weight:500;color:var(--df);cursor:pointer;transition:all .2s;white-space:nowrap}
-.pdf-btn:hover{background:var(--df);color:#fff;border-color:var(--df)}
+
+
 .tb-bar{display:flex;gap:2px;margin:36px 0 0;border-bottom:1.5px solid var(--fr)}
 .tb{background:none;border:none;cursor:pointer;padding:10px 22px;font-family:Outfit,sans-serif;font-size:13px;font-weight:400;color:var(--tm);border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:all .2s}
 .tb:hover{color:var(--df)}
 .tb.on{color:var(--df);border-bottom-color:var(--df);font-weight:500}
 .tn{font-family:"DM Mono",monospace;font-size:9px;margin-right:6px;opacity:.5}
+.print-footer{display:none}
 .tp-panel{display:none}
 .tp-panel.on{display:block;animation:fi .3s ease}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -147,96 +148,74 @@ footer{text-align:center;padding:32px 0 0;font-family:"DM Mono",monospace;font-s
 .sflash.show{opacity:1}
 @media(max-width:600px){.card{padding:20px 18px}.ybi{padding-left:18px}header{flex-direction:column}.fr2{grid-template-columns:1fr}.yact{flex-wrap:wrap}}
 @page{margin:10mm 12mm}
-@media print{
-/* Hide everything interactive and decorative */
-.bg,.sf-wrap,.tb-bar,.fb-bar,.hc,.pdf-btn,.fe2,footer,
-.add-btn,.add-yr,.ya,.xb,.bdel,.eidel,.ic2del,.lrdel,
-.embar,.yact,.sflash,.print-layout-btn,.dark-btn,
-.lt,#avi,label[for="avi"],
-header .av,header .nb .tt,
-.edit-mode-bar{display:none!important}
+@media print {
+  /* Hide all UI chrome */
+  .bg,.sf-wrap,.tb-bar,.fb-bar,.hc,.pdf-btn,.fe2,footer,
+  .add-btn,.add-yr,.ya,.xb,.bdel,.eidel,.ic2del,.lrdel,
+  .embar,.yact,.sflash,.print-layout-btn,.dark-btn,
+  .lt,#avi,.edit-mode-bar { display:none !important }
 
-/* Hide header entirely — name/title printed as part of first card instead */
-header{display:none!important}
+  /* Hide interactive header — print-name-header shows instead */
+  header { display:none !important }
 
-/* Body and wrapper */
-body{background:#fff!important;font-size:11px!important;margin:0;padding:0}
-.wr{padding:8px 16px 0;max-width:100%;margin:0}
+  body { background:#fff !important; font-size:11px !important; margin:0; padding:0 }
+  .wr  { padding:8px 16px; max-width:100%; position:static !important }
 
-/* Show all panels */
-.tp-panel{display:block!important}
-.yb{max-height:none!important;overflow:visible!important;display:block!important}
-.ye .yb{display:block!important}
+  /* Show ALL panels — key fix */
+  .tp-panel { display:block !important }
 
-/* Cards — compact */
-.card{break-inside:avoid;page-break-inside:avoid;
-  box-shadow:none!important;border:1px solid #ddd!important;
-  backdrop-filter:none!important;background:#fff!important;
-  margin-top:8px!important;padding:12px 16px!important}
+  /* Open all year bodies */
+  .yb { max-height:none !important; overflow:visible !important; display:block !important }
+  .ye { overflow:visible !important; break-inside:avoid; page-break-inside:avoid }
 
-/* Section labels */
-.sl{font-size:8px!important;margin-bottom:8px!important}
+  /* Cards */
+  .card { break-inside:avoid; page-break-inside:avoid; box-shadow:none !important;
+          border:1px solid #ddd !important; backdrop-filter:none !important;
+          background:#fff !important; margin-top:8px !important; padding:12px 16px !important }
 
-/* Stats row */
-.sr{gap:20px!important}
-.sn{font-size:24px!important}
-.sk{font-size:8px!important}
+  /* Compact typography */
+  .sl   { font-size:8px !important; margin-bottom:8px !important }
+  .sn   { font-size:24px !important }
+  .sk   { font-size:8px !important }
+  .stag { font-size:9px !important; padding:2px 7px !important }
+  .stag,.ic2,.ytag { print-color-adjust:exact; -webkit-print-color-adjust:exact }
+  .yb2  { font-size:10px !important; padding:2px 6px !important }
+  .yc strong { font-size:12px !important }
+  .yc span   { font-size:10px !important }
+  .ybi  { padding:2px 0 5px 48px !important }
+  .yd   { font-size:10px !important; margin:3px 0 4px !important }
+  .ybul li { font-size:10px !important; line-height:1.4 !important }
+  .ytag { font-size:9px !important; padding:1px 5px !important }
+  .ei   { padding:5px 0 !important }
+  .ey   { font-size:10px !important }
+  .einfo strong { font-size:11px !important }
+  .einfo span   { font-size:10px !important }
+  .ai   { font-size:14px !important }
+  .ab2  { font-size:10px !important }
+  .vg   { gap:6px !important }
+  .vc   { padding:9px !important }
+  .vc .ic { font-size:14px !important }
+  .vc h4  { font-size:10px !important }
+  .vc p   { font-size:9px !important }
+  .ic2  { padding:3px 8px !important; font-size:10px !important }
+  .lr   { padding:4px 0 !important }
+  .lbw  { height:4px !important }
+  .cg   { grid-template-columns:1fr 1fr !important; gap:5px !important }
+  .ci   { padding:7px !important }
+  .cion { width:26px !important; height:26px !important; font-size:12px !important }
+  .cl2  { font-size:8px !important }
+  .cv2  { font-size:10px !important }
+  .ch h2 { font-size:16px !important }
 
-/* Skills */
-.stag{font-size:9px!important;padding:2px 7px!important}
-.stag,.ic2,.ytag{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  [contenteditable] { background:transparent !important; box-shadow:none !important; padding:0 !important }
 
-/* Year entries */
-.ye{break-inside:avoid;page-break-inside:avoid;
-  border:none!important;border-bottom:1px solid #eee!important;
-  margin-bottom:2px!important;background:transparent!important}
-.ye:last-child{border-bottom:none!important}
-.yh{padding:5px 0!important}
-.yb2{font-size:10px!important;padding:2px 6px!important}
-.yc strong{font-size:12px!important}
-.yc span{font-size:10px!important}
-.ye.op .yb,.yb{max-height:none!important;overflow:visible!important}
-.ybi{padding:2px 0 5px 48px!important;border-top:none!important}
-.yd{font-size:10.5px!important;margin:3px 0 4px!important}
-.ybul li{font-size:10px!important;padding:1px 0 1px 14px!important;line-height:1.4!important}
-.ytags{gap:3px!important;margin-top:4px!important}
-.ytag{font-size:9px!important;padding:1px 5px!important}
-
-/* Education */
-.ei{padding:5px 0!important}
-.ey{font-size:10px!important}
-.einfo strong{font-size:11px!important}
-.einfo span{font-size:10px!important}
-
-/* About */
-.ai{font-size:14px!important}
-.ab2{font-size:10.5px!important}
-.ab2 p{margin-bottom:6px!important}
-.vg{gap:6px!important}
-.vc{padding:9px!important}
-.vc .ic{font-size:14px!important;margin-bottom:3px!important}
-.vc h4{font-size:10px!important}
-.vc p{font-size:9.5px!important}
-.ir{gap:5px!important}
-.ic2{padding:3px 8px!important;font-size:10px!important}
-.lr{padding:4px 0!important}
-.lbw{height:4px!important}
-
-/* Contact */
-.cg{grid-template-columns:1fr 1fr!important;gap:5px!important}
-.ci{padding:7px!important}
-.cion{width:26px!important;height:26px!important;font-size:12px!important}
-.cl2{font-size:8px!important}
-.cv2{font-size:10.5px!important}
-.ch h2{font-size:16px!important}
-.ch p{font-size:10px!important}
-.ab3{padding:4px 10px!important;font-size:9px!important;margin-top:8px!important}
-
-/* Editable fields — clean */
-[contenteditable]{background:transparent!important;box-shadow:none!important;padding:0!important}
-
-/* Name block — show at very top as print header */
-.print-name-header{display:block!important}
+  /* Print footer — name on every page */
+  .print-footer { display:block !important; position:fixed; bottom:0; left:0; right:0;
+    text-align:center; font-family:"DM Mono",monospace; font-size:9px;
+    letter-spacing:.12em; text-transform:uppercase; color:#7a9eb0;
+    border-top:1px solid #e4f0f6; padding:5px 0;
+    background:#fff; }
+  .print-name-header { display:block !important }
 }
 
 /* Hidden on screen, shown only in print as top header */
@@ -264,10 +243,10 @@ body.dark header .av{box-shadow:0 4px 24px rgba(0,0,0,.4),0 0 0 6px rgba(74,144,
 .dark-btn:hover{background:var(--df);color:#fff;border-color:var(--df)}
 body.dark .dark-btn{background:rgba(74,144,184,.15);border-color:var(--fr)}
 /* PRINT LAYOUT */
-.print-layout-btn{display:flex;align-items:center;gap:6px;padding:9px 14px;background:rgba(44,95,122,.1);border:1.5px solid var(--fr);border-radius:24px;font-family:Outfit,sans-serif;font-size:12px;font-weight:500;color:var(--df);cursor:pointer;transition:all .2s;white-space:nowrap}
-.print-layout-btn:hover{background:rgba(44,95,122,.15)}
-body.print-mode .tp-panel{display:block!important}
-.yb{max-height:none!important;overflow:visible!important;display:block!important}
+
+
+body.print-mode 
+.yb{max-height:none!important;overflow:visible!important}
 .ye .yb{display:block!important}
 body.print-mode .tb-bar,body.print-mode .fb-bar,body.print-mode .embar,body.print-mode .add-btn,body.print-mode .add-yr,body.print-mode .ya,body.print-mode .xb,body.print-mode .bdel,body.print-mode .eidel,body.print-mode .ic2del,body.print-mode .lrdel,body.print-mode .yact{display:none!important}
 body.print-mode .card{margin-top:8px;padding:14px 18px;box-shadow:none;border:1px solid var(--cd)}
@@ -276,4 +255,3 @@ body.print-mode .yb{max-height:none!important;overflow:visible!important}
 body.print-mode .ye .yb{display:block}
 body.print-mode .sflash{display:none!important}
 body.print-mode .hc{gap:6px}
-
