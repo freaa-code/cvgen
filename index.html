@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="description" content="CV – Erik Solberg, Senior Software Architect">
+<meta property="og:title" content="Erik Solberg – CV">
+<meta property="og:description" content="Senior Software Architect med 12+ års erfaring innen cloud, backend og teamledelse.">
+<meta property="og:type" content="website">
+<title>CV – Erik Solberg</title>
+<!-- DOMPurify for XSS sanitization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" integrity="sha512-GtAfRr+IWkORSuCbNnTq0fDSM8Z5JNakBbELBFfxMnIVbDVJE3psFB3MZsq+SNYBEWeSBiWXYeyeVqxMcOow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+<div class="bg"></div><div class="sf-wrap" id="sfw"></div>
+<div class="sflash" id="sfl"></div>
+<div class="wr" role="main">
+<div class="print-name-header" style="padding:8px 0 6px;border-bottom:1.5px solid #c8dfe9;margin-bottom:4px">
+  <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#0f2a38">Erik <em style="font-style:italic;color:#2c5f7a">Solberg</em></span>
+  <span id="print-title" style="display:inline-block;margin-left:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7ab8d4">Senior Software Architect</span>
+</div>
+<header>
+  <div class="pb">
+    <div class="av" onclick="document.getElementById('avi').click()" title="Klikk for å bytte bilde">&#x1F9CA;</div>
+    <input type="file" id="avi" accept="image/*" onchange="loadAv(this)">
+    <div class="nb">
+      <h1><span contenteditable="true" id="fname" aria-label="Fornavn" role="textbox">Erik</span> <em><span contenteditable="true" id="flname" aria-label="Etternavn" role="textbox">Solberg</span></em></h1>
+      <div class="tt" contenteditable="true" id="ftitle" aria-label="Jobbtittel" role="textbox">Senior Software Architect</div>
+    </div>
+  </div>
+  <div class="hc">
+    <div class="lt">
+      <button class="lb on" onclick="setLang('no')" aria-label="Norsk" aria-pressed="true">NO</button>
+      <button class="lb" onclick="setLang('en')" aria-label="English" aria-pressed="false">EN</button>
+    </div>
+    <button class="print-layout-btn" id="plbtn" onclick="togglePrintLayout()" aria-label="Vis kompakt utskriftsvisning">&#x1F5D0; <span id="pllbl">Kompakt visning</span></button>
+    <button class="pdf-btn" onclick="printCV()" aria-label="Last ned CV som PDF">&#x1F4C4; <span id="pdfl">Last ned PDF</span></button>
+    <button class="dark-btn" id="dkbtn" onclick="toggleDark()" aria-label="Bytt fargemodus">&#x1F319; <span id="dklbl">Mørk modus</span></button>
+  </div>
+</header>
+<div class="embar"><div class="emdot"></div><span id="ehint">Klikk p&#229; tekst for &#229; redigere &#8212; bruk + for &#229; legge til og &#215; for &#229; fjerne</span></div>
+<div class="tb-bar">
+  <button class="tb on" onclick="sw('cv',this)" role="tab" aria-selected="true" aria-controls="p-cv"><span class="tn">01</span><span id="t1">CV</span></button>
+  <button class="tb" onclick="sw('about',this)" role="tab" aria-selected="false" aria-controls="p-about"><span class="tn">02</span><span id="t2">Om meg</span></button>
+  <button class="tb" onclick="sw('contact',this)" role="tab" aria-selected="false" aria-controls="p-contact"><span class="tn">03</span><span id="t3">Kontakt</span></button>
+</div>
+<div class="tp-panel on" id="p-cv" role="tabpanel" aria-labelledby="t1">
+  <div class="card" style="padding:22px 32px">
+    <div class="sr">
+      <div class="si"><div class="sn" contenteditable="true" id="s1">12</div><div class="sk" id="sl1">&#197;rs erfaring</div></div>
+      <div class="si"><div class="sn" contenteditable="true" id="s2">40+</div><div class="sk" id="sl2">Prosjekter</div></div>
+      <div class="si"><div class="sn" contenteditable="true" id="s3">8</div><div class="sk" id="sl3">Sertifiseringer</div></div>
+      <div class="si"><div class="sn" contenteditable="true" id="s4">3</div><div class="sk" id="sl4">Land</div></div>
+    </div>
+  </div>
+  <div class="fb-bar">
+    <button class="fb" id="bfw" onclick="tf('work')">&#x1F4BC; <span id="lfw">Vis kun jobb</span></button>
+    <button class="fb" id="bfe" onclick="tf('edu')">&#x1F393; <span id="lfe">Vis kun utdanning</span></button>
+  </div>
+  <div class="card" id="sec-sk">
+    <div class="sl" id="lsk">Kjernekompetanse</div>
+    <div class="sg" id="skw">
+      <span class="stag hi"><span class="stag-text" contenteditable="true">Cloud Architecture</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag hi"><span class="stag-text" contenteditable="true">Kubernetes</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag hi"><span class="stag-text" contenteditable="true">TypeScript</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Go</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Rust</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Python</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">AWS</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Azure</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">GCP</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Terraform</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">CI/CD</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">GraphQL</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">PostgreSQL</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Redis</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Kafka</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">gRPC</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">System Design</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Agile / Scrum</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+      <span class="stag"><span class="stag-text" contenteditable="true">Team Lead</span><span class="xb" onclick="this.closest('.stag').remove();S()">&#215;</span></span>
+    </div>
+    <button class="add-btn" style="margin-top:12px" onclick="addSk()">+ <span id="asl">Legg til kompetanse</span></button>
+  </div>
+  <div class="card" id="sec-wk">
+    <div class="sl" id="lex">Arbeidserfaring</div>
+    <div id="tl"></div>
+    <button class="add-yr" onclick="addYr()">+ <span id="ayl">Legg til &#229;r / stilling</span></button>
+  </div>
+  <div class="card" id="sec-ed">
+    <div class="sl" id="led">Utdanning</div>
+    <div id="edl">
+      <div class="ei"><div class="ey" contenteditable="true">2008&#8211;2013</div><div class="einfo"><strong contenteditable="true">Master i Informatikk</strong><span contenteditable="true">Norges teknisk-naturvitenskapelige universitet (NTNU)</span></div><span class="eidel" onclick="this.closest('.ei').remove();S()">&#215;</span></div>
+      <div class="ei"><div class="ey" contenteditable="true">2021</div><div class="einfo"><strong contenteditable="true">AWS Certified Solutions Architect &#8212; Professional</strong><span contenteditable="true">Amazon Web Services</span></div><span class="eidel" onclick="this.closest('.ei').remove();S()">&#215;</span></div>
+      <div class="ei"><div class="ey" contenteditable="true">2019</div><div class="einfo"><strong contenteditable="true">Certified Kubernetes Administrator (CKA)</strong><span contenteditable="true">Cloud Native Computing Foundation</span></div><span class="eidel" onclick="this.closest('.ei').remove();S()">&#215;</span></div>
+    </div>
+    <button class="add-btn" style="margin-top:12px" onclick="addEd()">+ <span id="ael">Legg til utdanning</span></button>
+  </div>
+</div>
+<div class="tp-panel" id="p-about" role="tabpanel" aria-labelledby="t2">
+  <div class="card">
+    <p class="ai" contenteditable="true" id="ain">Jeg er en <em>nysgjerrig teknolog</em> med et hjerte for elegante systemer og team som faktisk stortrives.</p>
+    <div class="dv"></div>
+    <div class="ab2">
+      <p contenteditable="true" id="ap1">Vokste opp i Troms&#248; med fjordene rett utenfor vinduet og koden som et alternativt landskap. Tidlig fascinasjon for hvordan ting henger sammen ledet meg til informatikk ved NTNU og siden til en karriere der jeg har f&#229;tt bygge systemer som faktisk betyr noe.</p>
+      <p contenteditable="true" id="ap2">Jeg trives best i skj&#230;ringspunktet mellom arkitektur og teamledelse. Jeg tror p&#229; at god kode er prosa: lesbar, velstrukturert og med mening bak hvert valg.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sl" id="lval">Verdier &amp; Arbeidsform</div>
+    <div class="vg" id="vgrid">
+      <div class="vc"><div class="ic" contenteditable="true">&#x1F3D4;&#xFE0F;</div><h4 contenteditable="true" id="vh1">Langsiktig tenkning</h4><p contenteditable="true" id="vp1">Arkitektur som varer. Beslutninger tatt med fremtiden i sikte.</p><span class="xb" style="position:absolute;top:12px;right:12px;font-size:14px" onclick="this.closest('.vc').remove();S()">&#215;</span></div>
+      <div class="vc"><div class="ic" contenteditable="true">&#x1FA9E;</div><h4 contenteditable="true" id="vh2">Refleksjon og nyanser</h4><p contenteditable="true" id="vp2">Gode beslutninger krever rom til &#229; tenke seg om og se saken fra flere sider.</p><span class="xb" style="position:absolute;top:12px;right:12px;font-size:14px" onclick="this.closest('.vc').remove();S()">&#215;</span></div>
+      <div class="vc"><div class="ic" contenteditable="true">&#x1F9ED;</div><h4 contenteditable="true" id="vh3">Tydelig kommunikasjon</h4><p contenteditable="true" id="vp3">Teknisk kompleksitet forklart enkelt. Ikke fordi det er lett, men fordi det er viktig.</p><span class="xb" style="position:absolute;top:12px;right:12px;font-size:14px" onclick="this.closest('.vc').remove();S()">&#215;</span></div>
+      <div class="vc"><div class="ic" contenteditable="true">&#x1F331;</div><h4 contenteditable="true" id="vh4">Kontinuerlig l&#230;ring</h4><p contenteditable="true" id="vp4">Teknologi er bevegelig m&#229;l. Nysgjerrigheten holder meg i forkant.</p><span class="xb" style="position:absolute;top:12px;right:12px;font-size:14px" onclick="this.closest('.vc').remove();S()">&#215;</span></div>
+    </div>
+    <button class="add-btn" style="margin-top:14px" onclick="addVal()">+ <span id="avl">Legg til verdi</span></button>
+  </div>
+  <div class="card">
+    <div class="sl" id="lint">Interesser</div>
+    <div class="ir" id="intwrap">
+      <div class="ic2"><span contenteditable="true">&#x1F3CB;&#xFE0F;</span>&nbsp;<span contenteditable="true" id="in1">Styrketrening</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+      <div class="ic2"><span contenteditable="true">&#x1F957;</span>&nbsp;<span contenteditable="true" id="in2">Ern&#230;ring</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+      <div class="ic2"><span contenteditable="true">&#x1F3B8;</span>&nbsp;<span contenteditable="true" id="in3">Gitar</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+      <div class="ic2"><span contenteditable="true">&#x1F4AC;</span>&nbsp;<span contenteditable="true" id="in4">Kommunikasjon</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+      <div class="ic2"><span contenteditable="true">&#x1F94F;</span>&nbsp;<span contenteditable="true" id="in5">Frisbeegolf</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+      <div class="ic2"><span contenteditable="true">&#x1F6B4;</span>&nbsp;<span contenteditable="true" id="in6">Sykling</span><span class="ic2del" onclick="this.closest('.ic2').remove();S()">&#215;</span></div>
+    </div>
+    <button class="add-btn" style="margin-top:12px" onclick="addInt()">+ <span id="ail">Legg til interesse</span></button>
+  </div>
+  <div class="card">
+    <div class="sl" id="llng">Spr&#229;k</div>
+    <div id="langl">
+      <div class="lr"><div class="ln" contenteditable="true">Norsk</div><div class="ll" contenteditable="true">Morsmål</div><div class="lbw" data-pct="100"><div class="lbar" style="width:100%"></div></div><div class="lpct">100%</div><span class="lrdel" onclick="this.closest('.lr').remove();S()">&#215;</span></div>
+      <div class="lr"><div class="ln" contenteditable="true">English</div><div class="ll" contenteditable="true">Flytende</div><div class="lbw" data-pct="95"><div class="lbar" style="width:95%"></div></div><div class="lpct">95%</div><span class="lrdel" onclick="this.closest('.lr').remove();S()">&#215;</span></div>
+      <div class="lr"><div class="ln" contenteditable="true">Fran&#231;ais</div><div class="ll" contenteditable="true">Grunnleggende</div><div class="lbw" data-pct="35"><div class="lbar" style="width:35%"></div></div><div class="lpct">35%</div><span class="lrdel" onclick="this.closest('.lr').remove();S()">&#215;</span></div>
+    </div>
+    <button class="add-btn" style="margin-top:12px" onclick="addLng()">+ <span id="all">Legg til spr&#229;k</span></button>
+  </div>
+</div>
+<div class="tp-panel" id="p-contact" role="tabpanel" aria-labelledby="t3">
+  <div class="ch">
+    <h2 contenteditable="true" id="ch2">La oss ta en prat &#x2615;</h2>
+    <p contenteditable="true" id="csub" style="max-width:420px;margin:0 auto">Enten det gjelder spennende prosjekter, stillinger, eller bare en god teknologidiskusjon.</p>
+    <div class="ab3"><div class="aad"></div><span contenteditable="true" id="avail">&#197;pen for nye muligheter fra Q3 2025</span></div>
+  </div>
+  <div class="card">
+    <div class="sl" id="lci">Kontaktinfo</div>
+    <div class="cg">
+      <div class="ci"><div class="cion">&#x2709;&#xFE0F;</div><div><div class="cl2">E-post</div><div class="cv2" contenteditable="true" id="eml">erik.solberg@post.no</div></div></div>
+      <div class="ci"><div class="cion">&#x1F4DE;</div><div><div class="cl2" id="lph">Telefon</div><div class="cv2" contenteditable="true">+47 900 00 000</div></div></div>
+      <div class="ci"><div class="cion">&#x1F4CD;</div><div><div class="cl2" id="lloc">Sted</div><div class="cv2" contenteditable="true" id="locv">Oslo, Norge</div></div></div>
+      <div class="ci"><div class="cion">&#x1F517;</div><div><div class="cl2">LinkedIn</div><div class="cv2" contenteditable="true">linkedin.com/in/eriksolberg</div></div></div>
+      <div class="ci"><div class="cion">&#x2699;&#xFE0F;</div><div><div class="cl2">GitHub</div><div class="cv2" contenteditable="true">github.com/eriksolberg</div></div></div>
+      <div class="ci"><div class="cion">&#x1F310;</div><div><div class="cl2" id="lweb">Nettside</div><div class="cv2" contenteditable="true">eriksolberg.no</div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sl" id="lsend">Send melding</div>
+    <div class="fr2">
+      <div class="fg"><label id="fln">Ditt navn</label><input type="text" id="fn" placeholder="Ola Nordmann"></div>
+      <div class="fg"><label id="fle">E-postadresse</label><input type="email" id="fe" placeholder="ola@eksempel.no"></div>
+    </div>
+    <div class="fg"><label id="fls">Emne</label><input type="text" id="fs" placeholder="Emne"></div>
+    <div class="fg"><label id="flm">Melding</label><textarea id="fm" rows="5" placeholder="Din melding..."></textarea></div>
+    <button class="sb" onclick="doSend()"><span id="sl">Send melding &#x2192;</span></button>
+    <div class="fe2" id="fer"></div>
+  </div>
+</div>
+<footer><span contenteditable="true">&#169; 2025 Erik Solberg &middot; Bygget med omhu i Oslo</span></footer>
+</div>
+<script src="cv-data.js"></script>
+<script src="cv.js"></script>
+</body>
+</html>
