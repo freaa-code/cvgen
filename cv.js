@@ -192,7 +192,7 @@ function printCV(){
   } catch(e) {
     console.error('Could not save print data:', e);
   }
-  var w = window.open('cv-print.html', '_blank', 'noopener,noreferrer');
+  var w = window.open('cv-print.html', '_blank');
   if(!w) alert(L==='no' ? 'Tillat popup for å bruke PDF.' : 'Allow popups to use PDF.');
 }
 // DARK MODE
